@@ -12,16 +12,18 @@ namespace AGDDPlatformer
         public float jumpBufferTime = 0.1f; // Lets the player input a jump just before becoming grounded
 
         [Header("Dash")]
+        public float dashSpeedOriginal;
         public float dashSpeed;
         public float dashTime;
         public float dashCooldown;
         public Color canDashColor;
         public Color cantDashColor;
         float lastDashTime;
-        Vector2 dashDirection;
-        bool isDashing;
-        bool canDash;
+        public Vector2 dashDirection;
+        public bool isDashing;
+        public bool canDash;
         bool wantsToDash;
+        public bool inOrbRange = false; //sett by the orb manager script, to overite the desired dash direction
 
         [Header("Audio")]
         public AudioSource source;
@@ -58,6 +60,9 @@ namespace AGDDPlatformer
         {
             isFrozen = GameManager.instance.timeStopped;
 
+            if (!inOrbRange)
+                dashSpeed = dashSpeedOriginal;  //Asignes the player dash speed to it's original when he is not in range of a gem
+
             /* --- Read Input --- */
 
             move.x = Input.GetAxisRaw("Horizontal");
@@ -78,7 +83,6 @@ namespace AGDDPlatformer
             {
                 jumpReleased = true;
             }
-
             // Clamp directional input to 8 directions for dash
             Vector2 desiredDashDirection = new Vector2(
                 move.x == 0 ? 0 : (move.x > 0 ? 1 : -1),
@@ -89,6 +93,8 @@ namespace AGDDPlatformer
                 desiredDashDirection = spriteRenderer.flipX ? -Vector2.right : Vector2.right;
             }
             desiredDashDirection = desiredDashDirection.normalized;
+
+
             if (Input.GetButtonDown("Dash"))
             {
                 wantsToDash = true;
@@ -99,7 +105,8 @@ namespace AGDDPlatformer
             if (canDash && wantsToDash)
             {
                 isDashing = true;
-                dashDirection = desiredDashDirection;
+                if (!inOrbRange)
+                    dashDirection = desiredDashDirection;
                 lastDashTime = Time.time;
                 canDash = false;
                 gravityModifier = 0;
