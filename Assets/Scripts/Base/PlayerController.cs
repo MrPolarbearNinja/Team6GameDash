@@ -10,6 +10,7 @@ namespace AGDDPlatformer
         public float jumpDeceleration = 0.5f; // Upwards slow after releasing jump button
         public float cayoteTime = 0.1f; // Lets player jump just after leaving ground
         public float jumpBufferTime = 0.1f; // Lets the player input a jump just before becoming grounded
+        public bool isMoving = true;
 
         [Header("Dash")]
         public float dashSpeedOriginal;
@@ -66,6 +67,13 @@ namespace AGDDPlatformer
             /* --- Read Input --- */
 
             move.x = Input.GetAxisRaw("Horizontal");
+            if ((velocity.x > 0 && move.x < 0)
+                || (velocity.x < 0 && move.x > 0)
+                || (velocity.x <= maxSpeed && velocity.x >= 0)
+                || (velocity.x >= maxSpeed * -1 && velocity.x <= 0))
+
+                isMoving = true;
+
             if (gravityModifier < 0)
             {
                 move.x *= -1;
@@ -92,8 +100,9 @@ namespace AGDDPlatformer
                 // Dash in facing direction if there is no directional input;
                 desiredDashDirection = spriteRenderer.flipX ? -Vector2.right : Vector2.right;
             }
-            desiredDashDirection = desiredDashDirection.normalized;
 
+            desiredDashDirection = desiredDashDirection.normalized;
+            desiredDashDirection.x /= 2;
 
             if (Input.GetButtonDown("Dash"))
             {
@@ -104,6 +113,7 @@ namespace AGDDPlatformer
 
             if (canDash && wantsToDash)
             {
+                isMoving = false;
                 isDashing = true;
                 if (!inOrbRange)
                     dashDirection = desiredDashDirection;
@@ -128,6 +138,7 @@ namespace AGDDPlatformer
                     {
                         velocity.y *= jumpDeceleration;
                     }
+
                 }
             }
             else
@@ -164,7 +175,8 @@ namespace AGDDPlatformer
                     jumpReleased = false;
                 }
 
-                velocity.x = move.x * maxSpeed;
+                if (isMoving)
+                    velocity.x = move.x * maxSpeed;
 
                 if (isGrounded || (velocity + jumpBoost).magnitude < velocity.magnitude)
                 {

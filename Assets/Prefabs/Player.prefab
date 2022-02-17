@@ -48,12 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 0.5
+  gravityModifier: 1
   velocity: {x: 0, y: 0}
   isGrounded: 0
   isFrozen: 0
   maxSpeed: 7
-  jumpSpeed: 8
+  jumpSpeed: 16
   jumpDeceleration: 0.3
   cayoteTime: 0.1
   jumpBufferTime: 0.1
@@ -64,6 +64,8 @@ MonoBehaviour:
   canDashColor: {r: 0.20220721, g: 0.6037736, b: 0.25083956, a: 1}
   cantDashColor: {r: 1, g: 1, b: 1, a: 1}
   dashDirection: {x: 0, y: 0}
+  isDashing: 0
+  canDash: 0
   inOrbRange: 0
   source: {fileID: 1025081731160142149}
   jumpSound: {fileID: 8300000, guid: 8b772f38bed9f394db4026482c2fb8e4, type: 3}
