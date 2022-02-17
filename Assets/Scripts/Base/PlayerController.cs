@@ -10,7 +10,7 @@ namespace AGDDPlatformer
         public float jumpDeceleration = 0.5f; // Upwards slow after releasing jump button
         public float cayoteTime = 0.1f; // Lets player jump just after leaving ground
         public float jumpBufferTime = 0.1f; // Lets the player input a jump just before becoming grounded
-        public bool isMoving = true;
+        public bool canMove = true;
 
         [Header("Dash")]
         public float dashSpeedOriginal;
@@ -72,7 +72,7 @@ namespace AGDDPlatformer
                 || (velocity.x <= maxSpeed && velocity.x >= 0)
                 || (velocity.x >= maxSpeed * -1 && velocity.x <= 0))
 
-                isMoving = true;
+                canMove = true;
 
             if (gravityModifier < 0)
             {
@@ -113,7 +113,7 @@ namespace AGDDPlatformer
 
             if (canDash && wantsToDash)
             {
-                isMoving = false;
+                canMove = false;
                 isDashing = true;
                 if (!inOrbRange)
                     dashDirection = desiredDashDirection;
@@ -175,7 +175,7 @@ namespace AGDDPlatformer
                     jumpReleased = false;
                 }
 
-                if (isMoving)
+                if (canMove)
                     velocity.x = move.x * maxSpeed;
 
                 if (isGrounded || (velocity + jumpBoost).magnitude < velocity.magnitude)
