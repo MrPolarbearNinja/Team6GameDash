@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using AGDDPlatformer;
 
-public class DiamondDash : MonoBehaviour
+public class MoonDash : MonoBehaviour
 {
     PlayerController player;
     public float dashSpeed = 2;
     bool isDashing = false;
-    Vector2 dirNum;
+    public bool isLeft;
     DashGem dashGem;
 
     public void Start()
@@ -23,7 +23,6 @@ public class DiamondDash : MonoBehaviour
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
-            dirNum = AngleDir(transform.forward, player.dashDirection, transform.up);
             player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
         }
         if (player.isDashing)
@@ -33,9 +32,13 @@ public class DiamondDash : MonoBehaviour
 
         if (isDashing)
         {
-            if (Vector2.Distance(transform.position, player.transform.position) <= 0.1)
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4)
             {
-                player.dashDirection = (dirNum.normalized);
+                Debug.Log("Yes");
+                if (!isLeft)
+                    player.dashDirection = new Vector2(1, 0);
+                else
+                    player.dashDirection = new Vector2(-1, 0);
                 player.dash(player.dashDirection);
             }
         }
@@ -46,24 +49,5 @@ public class DiamondDash : MonoBehaviour
     {
         isDashing = false;
         player.inOrbRange = false;
-    }
-
-    Vector2 AngleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
-    {
-        Vector3 perp = Vector3.Cross(fwd, targetDir);
-        float dir = Vector3.Dot(perp, up);
-
-        if (dir > 0f)
-        {
-            return new Vector2(1, 1);
-        }
-        else if (dir < 0f)
-        {
-            return new Vector2(-1, 1);
-        }
-        else
-        {
-            return new Vector2(0, 0);
-        }
     }
 }
