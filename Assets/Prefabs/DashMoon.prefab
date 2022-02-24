@@ -232,7 +232,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 415741814653763478, guid: 93e7ea820edc4ba49ab0e1b4d7830cb3, type: 3}
+  m_Sprite: {fileID: 5638048079102374640, guid: 93e7ea820edc4ba49ab0e1b4d7830cb3,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -253,9 +254,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4472900285387683089}
   - component: {fileID: 4472900285387683090}
-  - component: {fileID: 2141501907}
+  - component: {fileID: 864096170}
   m_Layer: 0
-  m_Name: DashDiamond 1
+  m_Name: DashMoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +295,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.8476374
---- !u!114 &2141501907
+--- !u!114 &864096170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,10 +304,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4472900285387683101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b9f7f4ea58734b94d3452e91f26e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a64017ed512d5842ab7e15236d3f901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 2
+  dashSpeed: 16
+  isLeft: 0
 --- !u!1 &4472900285420705120
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +380,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 962806293248896454, guid: cc0c104f4f4028443b09d6f98b44d7b4, type: 3}
+  m_Sprite: {fileID: -8138782370738992367, guid: cc0c104f4f4028443b09d6f98b44d7b4,
+    type: 3}
   m_Color: {r: 0, g: 1, b: 0.098634005, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -24,7 +24,7 @@ public class DiamondDash : MonoBehaviour
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
             dirNum = AngleDir(transform.forward, player.dashDirection, transform.up);
-            player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
+            player.dashSpeed = dashSpeed / 10 * player.dashSpeedOriginal;
         }
         if (player.isDashing)
             isDashing = true;

@@ -23,7 +23,7 @@ public class MoonDash : MonoBehaviour
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
-            player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
+            player.dashSpeed = dashSpeed / 10 * player.dashSpeedOriginal;
         }
         if (player.isDashing)
             isDashing = true;
@@ -34,6 +34,8 @@ public class MoonDash : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, player.transform.position) <= 0.4)
             {
+                player.transform.position = transform.position;
+                player.velocity = Vector2.zero;
                 Debug.Log("Yes");
                 if (!isLeft)
                     player.dashDirection = new Vector2(1, 0);

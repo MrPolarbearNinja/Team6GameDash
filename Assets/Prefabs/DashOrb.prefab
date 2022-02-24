@@ -48,6 +48,7 @@ MonoBehaviour:
   activeIndicator: {fileID: 4472900285420705120}
   cooldown: 2
   source: {fileID: 4472900284273919396}
+  isActive: 0
 --- !u!82 &4472900284273919396
 AudioSource:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 4472900284821510188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51757, y: 0.51757, z: 0.51757}
+  m_LocalScale: {x: 0.7288939, y: 0.7288939, z: 0.7288939}
   m_Children: []
   m_Father: {fileID: 4472900285387683089}
   m_RootOrder: 2
@@ -252,8 +253,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4472900285387683089}
-  - component: {fileID: 4472900285387683091}
   - component: {fileID: 4472900285387683090}
+  - component: {fileID: 4472900285387683091}
   m_Layer: 0
   m_Name: DashOrb
   m_TagString: Untagged
@@ -278,19 +279,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4472900285387683091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4472900285387683101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75310146525a6549831894f5790a756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashSpeed: 2
 --- !u!58 &4472900285387683090
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -307,6 +295,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.8476374
+--- !u!114 &4472900285387683091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472900285387683101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75310146525a6549831894f5790a756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 16
 --- !u!1 &4472900285420705120
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 4472900285420705120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51757, y: 0.51757, z: 0.51757}
+  m_LocalScale: {x: 0.7288939, y: 0.7288939, z: 0.7288939}
   m_Children: []
   m_Father: {fileID: 4472900285387683089}
   m_RootOrder: 1

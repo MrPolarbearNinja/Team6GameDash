@@ -23,7 +23,7 @@ public class OrbDash : MonoBehaviour
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
-            player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
+            player.dashSpeed = dashSpeed/10 * player.dashSpeedOriginal;
         }
         if (player.isDashing)
             isDashing = true;
