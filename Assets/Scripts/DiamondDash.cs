@@ -33,7 +33,7 @@ public class DiamondDash : MonoBehaviour
 
         if (isDashing)
         {
-            if (Vector2.Distance(transform.position, player.transform.position) <= 0.1)
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4f)
             {
                 player.dashDirection = (dirNum.normalized);
                 player.dash(player.dashDirection);
@@ -55,11 +55,11 @@ public class DiamondDash : MonoBehaviour
 
         if (dir > 0f)
         {
-            return new Vector2(1, 1);
+            return new Vector2(1, 2);
         }
         else if (dir < 0f)
         {
-            return new Vector2(-1, 1);
+            return new Vector2(-1, 2);
         }
         else
         {

@@ -32,7 +32,7 @@ public class MoonDash : MonoBehaviour
 
         if (isDashing)
         {
-            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4)
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4f)
             {
                 player.transform.position = transform.position;
                 player.velocity = Vector2.zero;
