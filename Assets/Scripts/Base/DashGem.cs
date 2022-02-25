@@ -27,7 +27,7 @@ namespace AGDDPlatformer
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (!isActive)
+            if (!isActive || !GameManager.instance.players[0].isDashing)
                 return;
 
             PlayerController playerController = other.GetComponentInParent<PlayerController>();

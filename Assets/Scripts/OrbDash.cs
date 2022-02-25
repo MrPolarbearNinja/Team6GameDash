@@ -10,6 +10,7 @@ public class OrbDash : MonoBehaviour
     public float dashSpeed = 2;
     bool isDashing = false;
     DashGem dashGem;
+    public GameObject arrows;
 
     public void Start()
     {
@@ -19,11 +20,17 @@ public class OrbDash : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject == player.gameObject && player.canDash && !isDashing && dashGem.isActive)
+        if (collision.gameObject == player.gameObject && !isDashing && dashGem.isActive)
         {
             player.inOrbRange = true;
-            player.dashDirection = (transform.position - player.transform.position).normalized;
+            player.dashDirection = ((transform.position - player.transform.position) * 1000).normalized;
             player.dashSpeed = dashSpeed/10 * player.dashSpeedOriginal;
+
+            arrows.SetActive(true);
+            float angle = Mathf.Atan2(player.transform.position.y - arrows.transform.position.y,
+                                       player.transform.position.x - arrows.transform.position.x) * Mathf.Rad2Deg;
+            arrows.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+
         }
         if (player.isDashing)
             isDashing = true;
@@ -34,6 +41,7 @@ public class OrbDash : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        arrows.SetActive(false);
         isDashing = false;
         player.inOrbRange = false;
     }
