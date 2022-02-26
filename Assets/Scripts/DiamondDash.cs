@@ -26,7 +26,8 @@ public class DiamondDash : MonoBehaviour
         if (collision.gameObject == player.gameObject && !isDashing && dashGem.isActive)
         {
             player.inOrbRange = true;
-            player.dashDirection = ((transform.position - player.transform.position)*1000).normalized;
+            player.dashDirection = (transform.position - player.transform.position).normalized;
+            player.dashDirection.Normalize();
             dirNum = AngleDir(transform.forward, player.dashDirection, transform.up);
             player.dashSpeed = dashSpeed / 10 * player.dashSpeedOriginal;
 
@@ -35,18 +36,22 @@ public class DiamondDash : MonoBehaviour
                                        player.transform.position.x - playerArrow.transform.position.x) * Mathf.Rad2Deg;
             playerArrow.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
 
+            
+
         }
         if (player.isDashing)
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
 
+        dashGem.canPickUp = isDashing;
+
         if (isDashing)
         {
             if (Vector2.Distance(transform.position, player.transform.position) <= 0.4f)
             {
                 player.dashDirection = (dirNum.normalized);
-                player.dash(player.dashDirection);
+                player.dash(player.dashDirection, false);
             }
         }
 

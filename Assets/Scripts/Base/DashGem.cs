@@ -10,6 +10,8 @@ namespace AGDDPlatformer
         float lastCollected;
         public bool isActive;
 
+        public bool canPickUp;
+
 
         void Awake()
         {
@@ -27,7 +29,7 @@ namespace AGDDPlatformer
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (!isActive || !GameManager.instance.players[0].isDashing)
+            if (!isActive || !canPickUp)
                 return;
 
             PlayerController playerController = other.GetComponentInParent<PlayerController>();

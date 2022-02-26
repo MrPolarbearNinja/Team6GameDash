@@ -25,6 +25,7 @@ public class MoonDash : MonoBehaviour
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
+            player.dashDirection.Normalize();
             player.dashSpeed = dashSpeed / 10 * player.dashSpeedOriginal;
 
             arrowForward.SetActive(true);
@@ -33,11 +34,15 @@ public class MoonDash : MonoBehaviour
                                        player.transform.position.x - playerArrow.transform.position.x) * Mathf.Rad2Deg;
             playerArrow.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
 
+            
+
         }
         if (player.isDashing)
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
+
+        dashGem.canPickUp = isDashing;
 
         if (isDashing)
         {
@@ -50,7 +55,7 @@ public class MoonDash : MonoBehaviour
                     player.dashDirection = new Vector2(1, 0);
                 else
                     player.dashDirection = new Vector2(-1, 0);
-                player.dash(player.dashDirection);
+                player.dash(player.dashDirection, false);
             }
         }
 

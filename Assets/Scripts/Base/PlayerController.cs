@@ -113,9 +113,9 @@ namespace AGDDPlatformer
 
             /* --- Compute Velocity --- */
 
-            if (canDash && wantsToDash)
+            if ((canDash || inOrbRange) && wantsToDash)
             {
-                dash(desiredDashDirection);
+                dash(desiredDashDirection, true);
                 source.PlayOneShot(dashSound);
             }
             wantsToDash = false;
@@ -222,7 +222,7 @@ namespace AGDDPlatformer
             this.jumpBoost = jumpBoost;
         }
 
-        public void dash(Vector2 desiredDashDirection)
+        public void dash(Vector2 desiredDashDirection, bool normalDash)
         {
             velocity = Vector2.zero;
             canMove = false;
@@ -230,7 +230,8 @@ namespace AGDDPlatformer
             if (!inOrbRange)
                 dashDirection = desiredDashDirection;
             lastDashTime = Time.time;
-            canDash = false;
+            if (normalDash)
+                canDash = false;
             gravityModifier = 0;
         }
 

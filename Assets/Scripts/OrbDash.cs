@@ -23,7 +23,8 @@ public class OrbDash : MonoBehaviour
         if (collision.gameObject == player.gameObject && !isDashing && dashGem.isActive)
         {
             player.inOrbRange = true;
-            player.dashDirection = ((transform.position - player.transform.position) * 1000).normalized;
+            player.dashDirection = (transform.position - player.transform.position).normalized;
+            player.dashDirection.Normalize();
             player.dashSpeed = dashSpeed/10 * player.dashSpeedOriginal;
 
             arrows.SetActive(true);
@@ -31,11 +32,15 @@ public class OrbDash : MonoBehaviour
                                        player.transform.position.x - arrows.transform.position.x) * Mathf.Rad2Deg;
             arrows.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
 
+            
+
         }
         if (player.isDashing)
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
+
+        dashGem.canPickUp = isDashing;
     }
 
 
