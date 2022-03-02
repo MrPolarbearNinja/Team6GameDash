@@ -131,6 +131,7 @@ MonoBehaviour:
   cooldown: 2
   source: {fileID: 4472900284273919396}
   isActive: 0
+  canPickUp: 0
 --- !u!82 &4472900284273919396
 AudioSource:
   m_ObjectHideFlags: 0
