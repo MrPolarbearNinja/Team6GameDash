@@ -11,6 +11,10 @@ public class DiamondDash : MonoBehaviour
     Vector2 dirNum;
     DashGem dashGem;
 
+    public GameObject arrowRight;
+    public GameObject arrowLeft;
+    public GameObject playerArrow;
+
     public void Start()
     {
         player = GameManager.instance.players[0];
@@ -19,24 +23,35 @@ public class DiamondDash : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject == player.gameObject && player.canDash && !isDashing && dashGem.isActive)
+        if (collision.gameObject == player.gameObject && !isDashing && dashGem.isActive)
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
+            player.dashDirection.Normalize();
             dirNum = AngleDir(transform.forward, player.dashDirection, transform.up);
-            player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
+            player.dashSpeed = dashSpeed / 10 * player.dashSpeedOriginal;
+
+            playerArrow.SetActive(true);
+            float angle = Mathf.Atan2(player.transform.position.y - playerArrow.transform.position.y,
+                                       player.transform.position.x - playerArrow.transform.position.x) * Mathf.Rad2Deg;
+            playerArrow.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+
+            
+
         }
         if (player.isDashing)
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
 
+        dashGem.canPickUp = isDashing;
+
         if (isDashing)
         {
-            if (Vector2.Distance(transform.position, player.transform.position) <= 0.1)
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4f)
             {
                 player.dashDirection = (dirNum.normalized);
-                player.dash(player.dashDirection);
+                player.dash(player.dashDirection, false);
             }
         }
 
@@ -46,6 +61,9 @@ public class DiamondDash : MonoBehaviour
     {
         isDashing = false;
         player.inOrbRange = false;
+        arrowLeft.SetActive(false);
+        arrowRight.SetActive(false);
+        playerArrow.SetActive(false);
     }
 
     Vector2 AngleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
@@ -55,11 +73,15 @@ public class DiamondDash : MonoBehaviour
 
         if (dir > 0f)
         {
-            return new Vector2(1, 1);
+            arrowLeft.SetActive(false);
+            arrowRight.SetActive(true);
+            return new Vector2(1, 1.5f);
         }
         else if (dir < 0f)
         {
-            return new Vector2(-1, 1);
+            arrowLeft.SetActive(true);
+            arrowRight.SetActive(false);
+            return new Vector2(-1, 1.5f);
         }
         else
         {

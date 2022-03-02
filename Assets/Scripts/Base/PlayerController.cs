@@ -11,6 +11,7 @@ namespace AGDDPlatformer
         public float cayoteTime = 0.1f; // Lets player jump just after leaving ground
         public float jumpBufferTime = 0.1f; // Lets the player input a jump just before becoming grounded
         public bool canMove = true;
+        public float friction = 1;
 
         [Header("Dash")]
         public float dashSpeedOriginal;
@@ -59,7 +60,6 @@ namespace AGDDPlatformer
 
         void Update()
         {
-            Debug.Log(velocity);
 
             isFrozen = GameManager.instance.timeStopped;
 
@@ -113,9 +113,9 @@ namespace AGDDPlatformer
 
             /* --- Compute Velocity --- */
 
-            if (canDash && wantsToDash)
+            if ((canDash || inOrbRange) && wantsToDash)
             {
-                dash(desiredDashDirection);
+                dash(desiredDashDirection, true);
                 source.PlayOneShot(dashSound);
             }
             wantsToDash = false;
@@ -169,9 +169,11 @@ namespace AGDDPlatformer
                     }
                     jumpReleased = false;
                 }
-
-                if (canMove)
+                if (!isDashing)
+                    velocity.x = Mathf.MoveTowards(velocity.x, 0.0f, friction * 10 * Time.deltaTime);
+                if (canMove && move.x != 0)
                     velocity.x = move.x * maxSpeed;
+                    
 
                 if (isGrounded || (velocity + jumpBoost).magnitude < velocity.magnitude)
                 {
@@ -220,7 +222,7 @@ namespace AGDDPlatformer
             this.jumpBoost = jumpBoost;
         }
 
-        public void dash(Vector2 desiredDashDirection)
+        public void dash(Vector2 desiredDashDirection, bool normalDash)
         {
             velocity = Vector2.zero;
             canMove = false;
@@ -228,7 +230,8 @@ namespace AGDDPlatformer
             if (!inOrbRange)
                 dashDirection = desiredDashDirection;
             lastDashTime = Time.time;
-            canDash = false;
+            if (normalDash)
+                canDash = false;
             gravityModifier = 0;
         }
 
