@@ -212,6 +212,7 @@ namespace AGDDPlatformer
             lastJumpTime = -jumpBufferTime * 2;
 
             velocity = Vector2.zero;
+            isDashing = false;
         }
 
         public void ResetDash()
