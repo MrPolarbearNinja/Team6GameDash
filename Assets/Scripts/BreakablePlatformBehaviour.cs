@@ -37,13 +37,13 @@ public class BreakablePlatformBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        _isTouchingPlatform = false;
-        tilemap.color = Color.white;
-        _colorPercentage = 0.25f;
-        CancelInvoke();
-    }
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     _isTouchingPlatform = false;
+    //     tilemap.color = Color.white;
+    //     _colorPercentage = 0.25f;
+    //     CancelInvoke();
+    // }
 
     private void StillOnPlatformCheck()
     {
@@ -63,6 +63,8 @@ public class BreakablePlatformBehaviour : MonoBehaviour
 
     private void SpawnPlatform()
     {
+        tilemap.color = Color.white;
+        _colorPercentage = 0.25f;
         colliderObj.enabled = true;
         rendererObj.enabled = true;
     }
