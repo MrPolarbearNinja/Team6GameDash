@@ -213,6 +213,8 @@ namespace AGDDPlatformer
 
             velocity = Vector2.zero;
             isDashing = false;
+            canDash = false;
+            gravityModifier = defaultGravityModifier;
         }
 
         public void ResetDash()

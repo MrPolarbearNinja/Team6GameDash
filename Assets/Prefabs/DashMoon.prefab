@@ -131,6 +131,7 @@ MonoBehaviour:
   cooldown: 2
   source: {fileID: 4472900284273919396}
   isActive: 0
+  canPickUp: 0
 --- !u!82 &4472900284273919396
 AudioSource:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.29
+  m_Radius: 0.85
 --- !u!1 &4472900284821510188
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class RespawnScript : MonoBehaviour
     IEnumerator Respawn()
     {
         // Disable player movement and sprite on death
-        playerController.enabled = false;
+        //playerController.enabled = false;
         playerSprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
         yield return new WaitForSeconds(0.5f);
@@ -37,7 +37,7 @@ public class RespawnScript : MonoBehaviour
         playerController.ResetPlayer();
 
         // Enable player movement and sprite on death
-        playerController.enabled = true;
+        //playerController.enabled = true;
         playerSprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
