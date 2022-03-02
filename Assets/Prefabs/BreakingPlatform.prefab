@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderObj: {fileID: 8552912034441128795}
   rendererObj: {fileID: 8552912034441128793}
+  tilemap: {fileID: 8552912034441128794}
 --- !u!1 &8552912034556065078
 GameObject:
   m_ObjectHideFlags: 0
