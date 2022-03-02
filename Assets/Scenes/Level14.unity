@@ -186,6 +186,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4472900285387683091, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683101, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_Name
@@ -2639,8 +2644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothTime: 0.3
-  yOffsett: 3
+  smoothTime: 0.1
+  yOffsett: 0
 --- !u!1 &1167389556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900285387683091, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683101, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
@@ -5645,6 +5655,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4472900285387683091, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683101, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_Name
@@ -6066,6 +6081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900285387683091, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683101, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
