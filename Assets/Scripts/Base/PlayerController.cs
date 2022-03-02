@@ -170,7 +170,10 @@ namespace AGDDPlatformer
                     jumpReleased = false;
                 }
                 if (!isDashing)
-                    velocity.x = Mathf.MoveTowards(velocity.x, 0.0f, friction * 10 * Time.deltaTime);
+                    if (isGrounded)
+                        velocity.x = Mathf.MoveTowards(velocity.x, 0.0f, friction * 100 * Time.deltaTime);
+                    else
+                        velocity.x = Mathf.MoveTowards(velocity.x, 0.0f, friction * 10 * Time.deltaTime);
                 if (canMove && move.x != 0)
                     velocity.x = move.x * maxSpeed;
                     

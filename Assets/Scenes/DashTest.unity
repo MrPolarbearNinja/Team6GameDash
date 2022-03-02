@@ -637,13 +637,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothTime: 0.3
---- !u!1001 &1420145158
+--- !u!1001 &1668332705
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4472900284821510189, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8412164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900284821510189, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8412164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900284821510189, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8412164
+      objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683089, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_RootOrder
@@ -652,12 +667,12 @@ PrefabInstance:
     - target: {fileID: 4472900285387683089, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.83
+      value: 7.712547
       objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683089, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 2.021764
       objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683089, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
@@ -699,20 +714,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4472900285387683090, guid: 08b7a13b984391649a215474632a500d,
-        type: 3}
-      propertyPath: m_Radius
-      value: 8.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4472900285387683091, guid: 08b7a13b984391649a215474632a500d,
-        type: 3}
-      propertyPath: dashSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4472900285387683101, guid: 08b7a13b984391649a215474632a500d,
         type: 3}
       propertyPath: m_Name
       value: DashOrb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900285420705121, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8412164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900285420705121, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8412164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472900285420705121, guid: 08b7a13b984391649a215474632a500d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8412164
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b7a13b984391649a215474632a500d, type: 3}
