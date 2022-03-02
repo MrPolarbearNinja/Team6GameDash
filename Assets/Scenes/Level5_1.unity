@@ -261,6 +261,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf1327cb05e93146a4767d6fc3459b0, type: 3}
+--- !u!1 &382926427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2986141105068216002, guid: 1d096467bd11505479937aff780e5cd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1952642010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562722868
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378e721f123f24b49b0b732c07f13839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 382926427}
   playerController: {fileID: 1952642011}
 --- !u!483693784 &562722871
 TilemapRenderer:
@@ -367,7 +373,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
