@@ -8,7 +8,8 @@ namespace AGDDPlatformer
         public float cooldown = 2;
         public AudioSource source;
         float lastCollected;
-        bool isActive;
+        public bool isActive;
+
 
         void Awake()
         {

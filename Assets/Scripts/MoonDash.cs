@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using AGDDPlatformer;
 
-public class OrbDash : MonoBehaviour
+public class MoonDash : MonoBehaviour
 {
-
     PlayerController player;
     public float dashSpeed = 2;
     bool isDashing = false;
+    public bool isLeft;
     DashGem dashGem;
 
     public void Start()
@@ -29,13 +29,25 @@ public class OrbDash : MonoBehaviour
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
-    }
 
+        if (isDashing)
+        {
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.4)
+            {
+                Debug.Log("Yes");
+                if (!isLeft)
+                    player.dashDirection = new Vector2(1, 0);
+                else
+                    player.dashDirection = new Vector2(-1, 0);
+                player.dash(player.dashDirection);
+            }
+        }
+
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isDashing = false;
         player.inOrbRange = false;
     }
-
 }

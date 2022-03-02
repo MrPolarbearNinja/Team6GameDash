@@ -59,6 +59,8 @@ namespace AGDDPlatformer
 
         void Update()
         {
+            Debug.Log(velocity);
+
             isFrozen = GameManager.instance.timeStopped;
 
             if (!inOrbRange)
@@ -113,14 +115,7 @@ namespace AGDDPlatformer
 
             if (canDash && wantsToDash)
             {
-                canMove = false;
-                isDashing = true;
-                if (!inOrbRange)
-                    dashDirection = desiredDashDirection;
-                lastDashTime = Time.time;
-                canDash = false;
-                gravityModifier = 0;
-
+                dash(desiredDashDirection);
                 source.PlayOneShot(dashSound);
             }
             wantsToDash = false;
@@ -224,5 +219,18 @@ namespace AGDDPlatformer
         {
             this.jumpBoost = jumpBoost;
         }
+
+        public void dash(Vector2 desiredDashDirection)
+        {
+            velocity = Vector2.zero;
+            canMove = false;
+            isDashing = true;
+            if (!inOrbRange)
+                dashDirection = desiredDashDirection;
+            lastDashTime = Time.time;
+            canDash = false;
+            gravityModifier = 0;
+        }
+
     }
 }

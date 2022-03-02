@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using AGDDPlatformer;
 
-public class OrbDash : MonoBehaviour
+public class DiamondDash : MonoBehaviour
 {
-
     PlayerController player;
     public float dashSpeed = 2;
     bool isDashing = false;
+    Vector2 dirNum;
     DashGem dashGem;
 
     public void Start()
@@ -23,14 +23,24 @@ public class OrbDash : MonoBehaviour
         {
             player.inOrbRange = true;
             player.dashDirection = (transform.position - player.transform.position).normalized;
+            dirNum = AngleDir(transform.forward, player.dashDirection, transform.up);
             player.dashSpeed = dashSpeed * player.dashSpeedOriginal;
         }
         if (player.isDashing)
             isDashing = true;
         if (player.isGrounded)
             isDashing = false;
-    }
 
+        if (isDashing)
+        {
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.1)
+            {
+                player.dashDirection = (dirNum.normalized);
+                player.dash(player.dashDirection);
+            }
+        }
+
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -38,4 +48,22 @@ public class OrbDash : MonoBehaviour
         player.inOrbRange = false;
     }
 
+    Vector2 AngleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
+    {
+        Vector3 perp = Vector3.Cross(fwd, targetDir);
+        float dir = Vector3.Dot(perp, up);
+
+        if (dir > 0f)
+        {
+            return new Vector2(1, 1);
+        }
+        else if (dir < 0f)
+        {
+            return new Vector2(-1, 1);
+        }
+        else
+        {
+            return new Vector2(0, 0);
+        }
+    }
 }
