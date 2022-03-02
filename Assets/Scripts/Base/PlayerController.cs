@@ -12,6 +12,7 @@ namespace AGDDPlatformer
         public float jumpBufferTime = 0.1f; // Lets the player input a jump just before becoming grounded
         public bool canMove = true;
         public float friction = 1;
+        public bool isDead;
 
         [Header("Dash")]
         public float dashSpeedOriginal;
@@ -60,7 +61,8 @@ namespace AGDDPlatformer
 
         void Update()
         {
-
+            if (isDead)
+                return;
             isFrozen = GameManager.instance.timeStopped;
 
             if (!inOrbRange)
