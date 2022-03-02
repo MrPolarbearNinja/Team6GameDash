@@ -18,8 +18,21 @@ public class OrbDash : MonoBehaviour
         dashGem = transform.GetChild(0).gameObject.GetComponent<DashGem>();
     }
 
+    private void Update()
+    {
+        dashGem.canPickUp = isDashing;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isDashing)
+            Debug.Log(isDashing);
+        if (player.isDashing)
+            isDashing = true;
+        if (player.isGrounded)
+            isDashing = false;
+
+
         if (collision.gameObject == player.gameObject && !isDashing && dashGem.isActive && !player.isDashing)
         {
             player.inOrbRange = true;
@@ -32,12 +45,7 @@ public class OrbDash : MonoBehaviour
                                        player.transform.position.x - arrows.transform.position.x) * Mathf.Rad2Deg;
             arrows.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }
-        if (player.isDashing)
-            isDashing = true;
-        if (player.isGrounded)
-            isDashing = false;
-
-        dashGem.canPickUp = isDashing;
+        
     }
 
 
