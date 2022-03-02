@@ -43,6 +43,7 @@ namespace AGDDPlatformer
 
         IEnumerator Start()
         {
+            Time.timeScale = 0.7f;
             timeStopped = true;
 
             endScreen.SetActive(false);
