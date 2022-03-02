@@ -421,6 +421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b1ccccdcd9b31408a1afe5dda4df7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1577335901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2986141105068216002, guid: 1d096467bd11505479937aff780e5cd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577335899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1829556560
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378e721f123f24b49b0b732c07f13839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 1577335901}
   playerController: {fileID: 1577335900}
 --- !u!483693784 &1829556563
 TilemapRenderer:
@@ -527,7 +533,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
